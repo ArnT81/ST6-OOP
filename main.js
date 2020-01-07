@@ -50,7 +50,7 @@ class Main {
         })
 
         this.loginBTNRef.addEventListener('click', () => {
-            var login = new Login();
+            new Login();
         })
     }
 
@@ -71,3 +71,21 @@ class Main {
 document.addEventListener('DOMContentLoaded', function () {
     new Main();
 })
+
+
+/* as you can see there is no (event) and no arrow function either.
+addEventListener('input', myClass.myEventMethod, false);
+
+All there is to do now is to call prepare the method like this:
+The Parameter will be passed through anyway!
+
+myEventMethod(event) {
+
+      
+     Do stuff with event parameter.
+      
+
+};
+
+After that the listener can be removed like so:
+removeEventListener('input', myClass.myEventMethod, false); */

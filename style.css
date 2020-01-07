@@ -1,4 +1,3 @@
-
 #bodyRef {
 display: flex;
 background: rgb(75, 92, 107);
@@ -80,6 +79,12 @@ left: 25px;
 color: white;
 }
 
+.centerHeader {
+position: relative;
+left: 46%;
+width: 100px;
+}
+
 #myForm {
 position: absolute;
 top: 58px;
@@ -96,19 +101,49 @@ box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
 }
 
 .newActivity {
-    position: relative;
-    width: 191px;
-    height: 100px;
-    padding: 10px;
-    border-radius: 3px;
-    background: linear-gradient(150deg, rgb(62, 76, 88) 10%, rgb(31, 38, 44) 100%);
-    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
-    left: 21px;
-    top: 300px;
-    margin-left: 10px;
+position: relative;
+width: 191px;
+height: 100px;
+padding: 10px;
+border-radius: 3px;
+background: linear-gradient(150deg, rgb(62, 76, 88) 10%, rgb(31, 38, 44) 100%);
+box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+left: 21px;
+top: 300px;
+margin-left: 10px;
 }
 .newActivity > button {
-    position: relative;
-    bottom: -40px;
-    left: 40px;
+position: relative;
+bottom: -40px;
+left: 40px;
+}
+
+#myLogin {
+display: none;
+position: absolute;
+top: 50px;
+right: 9px;
+padding: 20px;
+flex-direction: column-reverse;
+width: 170px;
+height: 300px;
+background: linear-gradient(150deg, rgb(62, 76, 88) 10%, rgb(31, 38, 44) 60%);
+border-radius: 3px;
+color: black;
+box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px;
+}
+
+.myDay {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+top: 110px;
+width: 120px;
+height: 350px;
+font-size: larger;
+background: white;
+color: rgb(75, 92, 107);;
+margin-right: 30px;
+border-radius: 5px;
 }

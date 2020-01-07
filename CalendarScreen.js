@@ -18,13 +18,15 @@ class CalendarScreen extends Screen {
   }
 
   initCalendar() {
-/*  for (i = 0; i < dayRef.length; date++ , i++) {
-       let myDay = document.createElement('div');
-       completeWeek.appendChild(myDay);
-       myDay.innerHTML = dayRef[i] + '<br>' + date + '/' + month;
-       myDay.className = 'myDay';
-     } */
+    var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    week.forEach(element => {
+      let myDay = document.createElement('div');
+      this.element.appendChild(myDay);
+      //myDay.innerHTML = dayRef[i] + '<br>' + date + '/' + month;
+      myDay.className = 'myDay';
+    })
   }
 }
 
 
+//(i = 0; i < dayRef.length; date++ , i++) {
