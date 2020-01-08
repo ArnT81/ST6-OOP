@@ -2,6 +2,7 @@ class Login {
     constructor() {
         this.initloginModal()
         this.addEventListeners()
+        this.getUsers()
         this.loginBTNRef = document.getElementById('loginBTNRef')
     }
     // !! all objects in this container is set to flex-reverse !!
@@ -34,7 +35,7 @@ class Login {
         this.passwordInput = document.createElement('input');
         myLogin.appendChild(this.passwordInput);
         this.passwordInput.type = 'password';
-        this.passwordInput.value = 'Password';
+        this.passwordInput.value = 'Apt. 556';
         this.passwordInput.name = 'password:';
         this.passwordInput.style.height = '20px';
         this.passwordInput.style.width = '96%';
@@ -50,7 +51,7 @@ class Login {
         this.userInput = document.createElement('input');
         this.myLogin.appendChild(this.userInput);
         this.userInput.type = 'e-mail';
-        this.userInput.value = 'enter e-mail'
+        this.userInput.value = 'Sincere@april.biz'
         this.userInput.name = 'e-mail';
         this.userInput.style.height = '20px';
         this.userInput.style.width = '96%';
@@ -74,7 +75,7 @@ class Login {
 
         this.loginBtn.addEventListener('click', () => {
             this.userInput.style.borderColor = 'white';
-            this.passwordInput.style.borderColor = 'white';
+            this.passwordInput.style.borderColor = 'none';
             this.checkForm()
         })
 
@@ -82,6 +83,26 @@ class Login {
             this.myBody.removeChild(this.myLogin)
             //this.loginrefBtn.addEventListener('click', login)
         })
+    }
+
+    getUsers() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(data => {
+                var i = 0;
+                this.userEmail = []
+                data.forEach(element => {
+                    this.userEmail.push(data[i++].email)
+                });
+                console.table(this.userEmail)
+
+                var i = 0
+                this.userPassword = []
+                data.forEach(element => {
+                    this.userPassword.push(data[i++].address.suite)
+                })
+                console.table(this.userPassword)
+            })
     }
 
     checkForm() {
@@ -105,19 +126,18 @@ class Login {
             this.passwordInput.focus();
             return false;
         }
-        /* acceptedUsers = fetch('https://jsonplaceholder.typicode.com/users/');
-        if (!acceptedUsers.test(userInput.value)) {
-            alert("Welcome user!");
-            userInput.focus();
-            return true;
-        } */
+        for (let i = 0; i < this.userEmail.length; i++) {
+            if (this.userEmail[i] === this.userInput.value && this.userPassword[i] === this.passwordInput.value) {
+                alert('Welcome ' + this.userEmail[i] + ' ' + this.userPassword[i])
+                return true;
+            }
+            else {
+                alert('We do not recognize your email/password ' + this.userInput.value + ' please try again or become a member')
+                return false;
+            }
+        }
     }
 }
-
-
-
-
-
 
 
 
