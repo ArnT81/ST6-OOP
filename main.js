@@ -2,7 +2,7 @@ class Main {
     constructor() {
         this.basicUI();
         this.initButtons();
-        this.addEventListeners();
+        this.addEventListeners();     
     }
 
     basicUI() {
