@@ -35,7 +35,7 @@ class Login {
         this.passwordInput = document.createElement('input');
         myLogin.appendChild(this.passwordInput);
         this.passwordInput.type = 'password';
-        this.passwordInput.value = 'Apt. 556';
+        this.passwordInput.value = 'Suite 879';
         this.passwordInput.name = 'password:';
         this.passwordInput.style.height = '20px';
         this.passwordInput.style.width = '96%';
@@ -51,7 +51,7 @@ class Login {
         this.userInput = document.createElement('input');
         this.myLogin.appendChild(this.userInput);
         this.userInput.type = 'e-mail';
-        this.userInput.value = 'Sincere@april.biz'
+        this.userInput.value = 'Shanna@melissa.tv'
         this.userInput.name = 'e-mail';
         this.userInput.style.height = '20px';
         this.userInput.style.width = '96%';
@@ -76,7 +76,13 @@ class Login {
         this.loginBtn.addEventListener('click', () => {
             this.userInput.style.borderColor = 'white';
             this.passwordInput.style.borderColor = 'none';
-            this.checkForm()
+            this.checkForm();
+            if (this.validUsers() == true) {
+                alert('Welcome ' + this.userInput.value + ' ' + this.passwordInput.value) 
+            }
+            else {
+                alert('We do not recognize your email/password ' + this.userInput.value + '.' + '\n' + 'Please try again or become a member.')
+            }
         })
 
         this.cancelBtn.addEventListener('click', () => {
@@ -84,7 +90,7 @@ class Login {
             //this.loginrefBtn.addEventListener('click', login)
         })
     }
-
+    
     getUsers() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
@@ -103,6 +109,15 @@ class Login {
                 })
                 console.table(this.userPassword)
             })
+    }
+
+    validUsers() {
+        for (let i = 0; i < this.userEmail.length; i++) {
+            if (this.userEmail[i] === this.userInput.value && this.userPassword[i] === this.passwordInput.value) {
+               //message
+                return true;
+            }
+        }
     }
 
     checkForm() {
@@ -126,20 +141,8 @@ class Login {
             this.passwordInput.focus();
             return false;
         }
-        for (let i = 0; i < this.userEmail.length; i++) {
-            if (this.userEmail[i] === this.userInput.value && this.userPassword[i] === this.passwordInput.value) {
-                alert('Welcome ' + this.userEmail[i] + ' ' + this.userPassword[i])
-                return true;
-            }
-            else {
-                alert('We do not recognize your email/password ' + this.userInput.value + ' please try again or become a member')
-                return false;
-            }
-        }
     }
 }
-
-
 
 
 

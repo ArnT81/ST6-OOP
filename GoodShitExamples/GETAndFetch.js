@@ -53,4 +53,3 @@ fetch('https://jsonplaceholder.typicode.com/users')
             //console.log('Fetch suite ', data[i].address.suite)
         }
     });
-
