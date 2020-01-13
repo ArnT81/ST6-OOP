@@ -1,8 +1,12 @@
+var GlobalState = {
+    showLogin: false
+}
+
 class Main {
     constructor() {
         this.basicUI();
         this.initButtons();
-        this.addEventListeners();     
+        this.addEventListeners();
     }
 
     basicUI() {
@@ -49,9 +53,15 @@ class Main {
             this.changeScreen('calendar');
         })
 
-        this.loginBTNRef.addEventListener('click', () => {
+        this.loginBTNRef.addEventListener('click', this.onShowLogin);
+    }
+
+    onShowLogin = () => {
+        if (!GlobalState.showLogin) {
+            GlobalState.showLogin = true;
             new Login();
-        })
+        }
+
     }
 
     changeScreen(screenType) {
@@ -71,44 +81,3 @@ class Main {
 document.addEventListener('DOMContentLoaded', function () {
     new Main();
 })
-
-
-/* as you can see there is no (event) and no arrow function either.
-addEventListener('input', myClass.myEventMethod, false);
-
-All there is to do now is to call prepare the method like this:
-The Parameter will be passed through anyway!
-
-myEventMethod(event) {
-
-      
-     Do stuff with event parameter.
-      
-
-};
-
-After that the listener can be removed like so:
-removeEventListener('input', myClass.myEventMethod, false); */
-
-/* class Person {
-    constructor(){
-      this.name = 'Jane Doe';
-      this.callOnClick = this.callOnClick.bind(this);
-  
-      this.initEvents();
-    }
-  
-    initEvents(){
-      // document.addEventListener('click', this.callOnClick);
-      document.addEventListener('click', this.callOnClickArrow);
-    }
-  
-    callOnClick(){
-      console.log(this.name);
-    }
-  
-    // An arrow function does not have its own this; the this value of the enclosing execution context is used.
-    callOnClickArrow = () => {
-      console.log(this.name);
-    }
-  } */

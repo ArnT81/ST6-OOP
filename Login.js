@@ -1,9 +1,9 @@
 class Login {
     constructor() {
-        this.initloginModal()
-        this.addEventListeners()
-        this.getUsers()
-        this.loginBTNRef = document.getElementById('loginBTNRef')
+        this.initloginModal();
+        this.addEventListeners();
+        this.getUsers();
+        this.loginBTNRef = document.getElementById('loginBTNRef');
     }
     // !! all objects in this container is set to flex-reverse !!
     initloginModal() {
@@ -51,7 +51,7 @@ class Login {
         this.userInput = document.createElement('input');
         this.myLogin.appendChild(this.userInput);
         this.userInput.type = 'e-mail';
-        this.userInput.value = 'Shanna@melissa.tv'
+        this.userInput.value = 'Shanna@melissa.tv';
         this.userInput.name = 'e-mail';
         this.userInput.style.height = '20px';
         this.userInput.style.width = '96%';
@@ -62,6 +62,9 @@ class Login {
         userText.innerHTML = 'E-mail:';
         userText.style.margin = '0';
         this.myLogin.appendChild(userText);
+
+        this.errorMsg = document.createElement('div')
+        this.myBody.appendChild(this.errorMsg);
     }
 
     addEventListeners() {
@@ -78,43 +81,49 @@ class Login {
             this.passwordInput.style.borderColor = 'none';
             this.checkForm();
             if (this.validUsers() == true) {
-                alert('Welcome ' + this.userInput.value + ' ' + this.passwordInput.value) 
-            }
-            else {
-                alert('We do not recognize your email/password ' + this.userInput.value + '.' + '\n' + 'Please try again or become a member.')
+                alert('Welcome ' + this.userInput.value + ' ' + this.passwordInput.value);
+
+                this.loggedInUser = document.createElement('p');
+                this.loggedInUser.innerText = this.userInput.value;
+                this.loggedInUser.id = 'loggedInUser';
+                headDiv.appendChild(this.loggedInUser);
+
+                this.myBody.removeChild(this.myLogin);
+                this.errorMsg.style.display = 'none';
             }
         })
 
         this.cancelBtn.addEventListener('click', () => {
-            this.myBody.removeChild(this.myLogin)
-            //this.loginrefBtn.addEventListener('click', login)
+            this.myBody.removeChild(this.myLogin);
+            this.errorMsg.style.display = 'none';
+
+            GlobalState.showLogin = false;
         })
     }
-    
+
     getUsers() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(data => {
                 var i = 0;
-                this.userEmail = []
+                this.userEmail = [];
                 data.forEach(element => {
-                    this.userEmail.push(data[i++].email)
+                    this.userEmail.push(data[i++].email);
                 });
-                console.table(this.userEmail)
+                console.table(this.userEmail);
 
-                var i = 0
-                this.userPassword = []
+                var i = 0;
+                this.userPassword = [];
                 data.forEach(element => {
-                    this.userPassword.push(data[i++].address.suite)
+                    this.userPassword.push(data[i++].address.suite);
                 })
-                console.table(this.userPassword)
+                console.table(this.userPassword);
             })
     }
 
     validUsers() {
         for (let i = 0; i < this.userEmail.length; i++) {
             if (this.userEmail[i] === this.userInput.value && this.userPassword[i] === this.passwordInput.value) {
-               //message
                 return true;
             }
         }
@@ -123,21 +132,34 @@ class Login {
     checkForm() {
         var atSign = /[@]/
         if (!atSign.test(this.userInput.value)) {
-            alert("Error: email has to consist of a @!");
-            this.userInput.focus();
+
+            this.errorMsg.style.display = 'block';
+            this.errorMsg.className = 'errorMsg';
+            this.errorMsg.innerText = 'Error: Email has to consist of an @!';
+
             this.userInput.style.borderColor = 'red';
+            this.userInput.focus();
             return false;
         }
         var needNumber = /[0-9]/;
         if (!needNumber.test(this.passwordInput.value)) {
-            alert("Error: password must consist of atleast 1 letter & 1 character!");
-            this.passwordInput.focus();
+
+            this.errorMsg.style.display = 'block';
+            this.errorMsg.className = 'errorMsg';
+            this.errorMsg.innerText = 'Error: password must consist of atleast 1 letter & 1 character!';
+
             this.passwordInput.style.borderColor = 'red';
+            this.passwordInput.focus();
             return false;
         }
         var needNumber = /[a-z]/;
         if (!needNumber.test(this.passwordInput.value)) {
-            alert("Error: password must consist of atleast 1 letter & 1 character!");
+
+            this.errorMsg.style.display = 'block';
+            this.errorMsg.className = 'errorMsg';
+            this.errorMsg.innerText = 'Error: password must consist of atleast 1 letter & 1 character!';
+
+            this.passwordInput.style.borderColor = 'red';
             this.passwordInput.focus();
             return false;
         }
