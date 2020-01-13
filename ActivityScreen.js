@@ -56,7 +56,7 @@ class ActivityScreen extends Screen {
     this.inputActivity.focus();
     var showInput = 'Activity: ' + this.inputActivity.value + '<br>' + ' Date: ' + this.inputDate.value + '<br>';
     this.newActivity = document.createElement('div');
-    this.myDay.appendChild(this.newActivity);
+    this.element.appendChild(this.newActivity);
     this.newActivity.innerHTML = showInput;
     this.newActivity.className = 'newActivity';
     this.delActivity = document.createElement('button')
