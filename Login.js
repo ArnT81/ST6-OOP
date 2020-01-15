@@ -38,7 +38,7 @@ class Login {
         this.passwordInput.value = 'Suite 879';
         this.passwordInput.name = 'password:';
         this.passwordInput.style.height = '20px';
-        this.passwordInput.style.width = '96%';
+        this.passwordInput.style.width = '96.1%';
         this.passwordInput.className = 'input';
         this.passwordInput.style.borderColor = 'white';
 
@@ -54,7 +54,7 @@ class Login {
         this.userInput.value = 'Shanna@melissa.tv';
         this.userInput.name = 'e-mail';
         this.userInput.style.height = '20px';
-        this.userInput.style.width = '96%';
+        this.userInput.style.width = '96.1%';
         this.userInput.className = 'input';
         this.userInput.style.borderColor = 'white';
 
@@ -65,14 +65,21 @@ class Login {
 
         this.errorMsg = document.createElement('div')
         this.myBody.appendChild(this.errorMsg);
+
+        this.errorMsg2 = document.createElement('div')
+        this.myBody.appendChild(this.errorMsg2);
     }
 
     addEventListeners() {
         this.userInput.addEventListener('click', () => {
+            this.errorMsg.style.display = 'none';
+            this.errorMsg2.style.display = 'none';
             this.userInput.value = '';
         })
 
         this.passwordInput.addEventListener('click', () => {
+            this.errorMsg.style.display = 'none';
+            this.errorMsg2.style.display = 'none';
             this.passwordInput.value = '';
         })
 
@@ -90,13 +97,19 @@ class Login {
 
                 this.myBody.removeChild(this.myLogin);
                 this.errorMsg.style.display = 'none';
+                this.errorMsg2.style.display = 'none';
+            }
+            else {
+                this.errorMsg2.style.display = 'block';
+                this.errorMsg2.className = 'errorMsg2';
+                this.errorMsg2.innerText = 'Error: User does not exist!';
             }
         })
 
         this.cancelBtn.addEventListener('click', () => {
             this.myBody.removeChild(this.myLogin);
             this.errorMsg.style.display = 'none';
-
+            this.errorMsg2.style.display = 'none';
             GlobalState.showLogin = false;
         })
     }

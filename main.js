@@ -56,7 +56,7 @@ class Main {
         this.loginBTNRef.addEventListener('click', this.onShowLogin);
     }
 
-    onShowLogin = () => {
+    onShowLogin() {
         if (!GlobalState.showLogin) {
             GlobalState.showLogin = true;
             new Login();
