@@ -1,3 +1,9 @@
+/**
+ * Klassen skapar en ny header som heter "New Activity".
+ * Den skapar alla objekt i "New Activity" screen.
+ * Skapar "New Acitvity" modal, Add activity och kan radera den acitivity som läggs till.
+*/
+
 class ActivityScreen extends Screen {
   constructor() {
     super();

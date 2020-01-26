@@ -1,3 +1,7 @@
+/**
+ * Klassen gör det möjligt att bläddra mellan screens utan att innehållet på den förra screen finns kvar. 
+*/
+
 class Screen {
   constructor(){
     this.initElement();

@@ -1,3 +1,10 @@
+/**
+ * Klassen skapar login modalen som visas när man trycker på Login, och dess innehåll.
+ * Den skapar valideringen som kollar fall användarnamn innehåller ett @ och lösenord innehåller minst en siffra och en bokstav som stämmer med jsonplaceholder.
+ * Tar emot användare och lösenord från jsonplaceholder.
+ * Den visar upp användaren som är inloggad.
+*/
+
 class Login {
     constructor() {
         this.initloginModal();
@@ -123,14 +130,12 @@ class Login {
                 data.forEach(element => {
                     this.userEmail.push(data[i++].email);
                 });
-                console.table(this.userEmail);
 
                 var i = 0;
                 this.userPassword = [];
                 data.forEach(element => {
                     this.userPassword.push(data[i++].address.suite);
                 })
-                console.table(this.userPassword);
             })
     }
 

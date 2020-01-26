@@ -1,3 +1,10 @@
+/**
+ * Den skapar en header som innehåller "Calendar" och "1 week".
+ * Klassen skapar rutorna för dagarna som visas upp på skärmen.
+ * Den delar upp divarna i dag och datum.
+ * Delar upp divarna i 24 timmar.
+*/
+
 class CalendarScreen extends Screen {
   constructor() {
     super();

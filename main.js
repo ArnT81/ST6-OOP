@@ -1,3 +1,9 @@
+/**
+ * Klassen skapar sidans grafiska gränssnitt.
+ * Den skapar navigations diven och knapparna diven innehåller, samt login knappen i header.
+ * Klassen tillåter oss att navigera mellan "New Activity" och "Calendar".
+*/
+
 var GlobalState = {
     showLogin: false
 }
